@@ -1,0 +1,10 @@
+require "user.keymaps"
+require "user.plugins"
+require "user.options"
+require "user.colorscheme"
+require "user.autopairs"
+require "user.lualine"
+require "user.treesitter"
+require "user.indentline"
+require "user.nerdtree"
+
