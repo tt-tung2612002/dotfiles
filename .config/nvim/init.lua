@@ -7,4 +7,6 @@ require "user.lualine"
 require "user.treesitter"
 require "user.indentline"
 require "user.nerdtree"
-
+require "user.telescope"
+require "user.lsp"
+-- require "user.cmp"
