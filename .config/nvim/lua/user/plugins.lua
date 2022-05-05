@@ -1,5 +1,4 @@
 local fn = vim.fn
-
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -45,10 +44,16 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-  use "numToStr/Comment.nvim" -- Easily comment stuff
+
+  use {
+    "terrortylor/nvim-comment",
+    config = function() require('nvim_comment').setup()
+    end
+  }
+  use "rstacruz/vim-closer" -- Closes the current buffer
+  use "akinsho/bufferline.nvim"
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
-  use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
   use "nvim-lualine/lualine.nvim"
   use "akinsho/toggleterm.nvim"
@@ -60,17 +65,17 @@ return packer.startup(function(use)
   use "folke/which-key.nvim"
 
   -- Colorschemes
-  use "rafi/awesome-vim-colorschemes"
-  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
+  use "tomasiser/vim-code-dark"
 
-  -- cmp plugins
+  -- cmp plugns
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
+
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -80,7 +85,9 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+  use "brymer-meneses/grammar-guard.nvim" -- grammar guard
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "RRethy/vim-illuminate"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -109,7 +116,6 @@ return packer.startup(function(use)
   use "tiagofumo/vim-nerdtree-syntax-highlight"
   use "Xuyuanp/nerdtree-git-plugin"
   use "PhilRunninger/nerdtree-visual-selection"
-  use "nvim-lua/completion-nvim"
   use "tpope/vim-eunuch"
   -- Automatically set up your configuration after cloning packer.nvim
   -- use "github/copilot.vim"

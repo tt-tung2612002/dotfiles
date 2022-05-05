@@ -1,11 +1,25 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- vim.g["mapleader"]="<space>"
+-- vim.g["maplocalleader"]="<space>"
+vim.g["airline_theme"] = "codedark"
 vim.cmd([[
 let NERDTreeMapOpenSplit='q'
 let NERDTreeMapUp='i'
 let NERDTreeMenuDown='k'
 let NERDTreeMapUpDir= 'u'
 nmap <F3> :TagbarToggle<CR>
+nnoremap <Space> <Nop>
+let mapleader = "\<Space>"
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap! <C-BS> <C-w>
+noremap! <C-h> <C-w>
 nnoremap j h
 nnoremap k j
 nnoremap i k
@@ -41,14 +55,12 @@ nnoremap <M-j> :vertical resize -2<CR>
 nnoremap <M-l> :vertical resize +2<CR>
 nnoremap <M-l> :vertical resize +2<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
-
 set iskeyword+=_
 set iskeyword+=-
-
+imap <C-BS> <C-W>
 " Auto reload.
 au FocusGained,BufEnter * :checktime
 " Vim Commentary
-nmap <C-/> <Plug>CommentaryLine
 "
 autocmd User TelescopePreviewerLoaded setlocal wrap
 
@@ -59,7 +71,6 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 ]])
 
--- move text up and down
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
@@ -77,5 +88,14 @@ keymap("v", ">", ">gv", opts)
 keymap("x", "<A-k>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-i>", ":move '<-2<CR>gv-gv", opts)
 
+-- Rename current file.
+keymap("n", "<F2>", ":Rename ", opts)
+keymap("n", "<C-_>", ":CommentToggle <CR>", opts)
+keymap("v", "<C-_>", ":CommentToggle <CR>", opts)
 
+-- quit vim
+keymap("n", "q", ":wq<CR>", opts)
+keymap("x", "<C-_>", ":CommentToggle <CR>", opts)
 
+keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', opts)
+keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', opts)
