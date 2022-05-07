@@ -1,18 +1,26 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 
+telescope.setup {
+  extensions = {
+    media_files = {
+      -- filetypes whitelist
+      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+      filetypes = { "png", "webp", "jpg", "jpeg" },
+      find_cmd = "rg", -- find command (defaults to `fd`)
+      on_enter = function(filepath)
+        vim.fn.setreg('+', filepath)
+        vim.notify("The image path has been copied to system clipboard!")
+      end
 
-telescope.setup{
+    }
+  },
   defaults = {
     mappings = {
       n = {
         ["q"] = actions.close
       },
     },
---  layout_config = {
---      width = 0.98,
---      preview_cutoff = 40
---  },
     layout_config = {
       horizontal = {
         width_padding = 0.04,
@@ -27,6 +35,3 @@ telescope.setup{
     },
   }
 }
-
-
-

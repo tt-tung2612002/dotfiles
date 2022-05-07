@@ -2,10 +2,7 @@
 -- vim.g["maplocalleader"]="<space>"
 vim.g["airline_theme"] = "codedark"
 vim.cmd([[
-let NERDTreeMapOpenSplit='q'
-let NERDTreeMapUp='i'
-let NERDTreeMenuDown='k'
-let NERDTreeMapUpDir= 'u'
+set pastetoggle=<F10>
 nmap <F3> :TagbarToggle<CR>
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
@@ -55,8 +52,7 @@ nnoremap <M-j> :vertical resize -2<CR>
 nnoremap <M-l> :vertical resize +2<CR>
 nnoremap <M-l> :vertical resize +2<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
-set iskeyword+=_
-set iskeyword+=-
+highlight Comment guifg=#a26a4d
 imap <C-BS> <C-W>
 " Auto reload.
 au FocusGained,BufEnter * :checktime
@@ -73,7 +69,7 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
+-- local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -88,14 +84,16 @@ keymap("v", ">", ">gv", opts)
 keymap("x", "<A-k>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-i>", ":move '<-2<CR>gv-gv", opts)
 
+keymap("i", "<C-v>", "<F10><C-r>+<F10>", opts)
 -- Rename current file.
 keymap("n", "<F2>", ":Rename ", opts)
-keymap("n", "<C-_>", ":CommentToggle <CR>", opts)
-keymap("v", "<C-_>", ":CommentToggle <CR>", opts)
+keymap("n", "<C-/>", ":CommentToggle <CR>", opts)
+keymap("v", "<C-/>", ":CommentToggle <CR>", opts)
 
 -- quit vim
-keymap("n", "q", ":wq<CR>", opts)
-keymap("x", "<C-_>", ":CommentToggle <CR>", opts)
+keymap("n", "q", ":q<CR>", opts)
+keymap("n", "Q", ":wq!<CR>", opts)
+keymap("x", "<C-/>", ":CommentToggle <CR>", opts)
 
 keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', opts)
 keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', opts)

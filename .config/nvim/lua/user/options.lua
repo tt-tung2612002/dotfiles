@@ -16,7 +16,7 @@ local options = {
   splitbelow = true, -- force all horizontal splits to go below current window
   splitright = true, -- force all vertical splits to go to the right of current window
   swapfile = false, -- creates a swapfile
-  -- termguicolors = true,                    -- set term gui colors (most terminals support this)
+  -- termguicolors = true, -- set term gui colors (most terminals support this)
   timeoutlen = 200, -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true, -- enable persistent undo
   updatetime = 300, -- faster completion (4000ms default)
@@ -32,7 +32,7 @@ local options = {
   wrap = true, -- display lines as one long line
   scrolloff = 8, -- is one of my fav
   sidescrolloff = 8,
-  -- guifont = "monospace:h17",               -- the font used in graphical neovim applications
+  guifont = "FiraMono Nerd Font:h15", -- the font used in graphical neovim applications
 }
 
 vim.opt.shortmess:append "c"
@@ -43,4 +43,8 @@ end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
+vim.cmd [[set iskeyword+=_]]
+vim.cmd [[highlight Comment guifg=#dbaf84]]
+vim.cmd [[highlight String guifg=#ec8076]]
+vim.cmd [[highlight Number guifg=#c0b6a9]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work

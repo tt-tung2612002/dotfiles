@@ -50,6 +50,8 @@ return packer.startup(function(use)
     config = function() require('nvim_comment').setup()
     end
   }
+
+  use("nathom/filetype.nvim")
   use "rstacruz/vim-closer" -- Closes the current buffer
   use "akinsho/bufferline.nvim"
   use "kyazdani42/nvim-web-devicons"
@@ -67,6 +69,11 @@ return packer.startup(function(use)
   -- Colorschemes
   use "lunarvim/darkplus.nvim"
   use "tomasiser/vim-code-dark"
+
+
+  -- color for css.
+  use "chrisbra/colorizer"
+  use "norcalli/nvim-colorizer.lua"
 
   -- cmp plugns
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -91,6 +98,14 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
+  use {
+    "nvim-telescope/telescope-media-files.nvim",
+    module = "telescope",
+    after = "telescope.nvim",
+    config = function()
+      require('telescope').load_extension('media_files')
+    end
+  }
 
   -- Treesitter
   use {
@@ -117,6 +132,11 @@ return packer.startup(function(use)
   use "Xuyuanp/nerdtree-git-plugin"
   use "PhilRunninger/nerdtree-visual-selection"
   use "tpope/vim-eunuch"
+
+
+  -- notification
+  use "rcarriga/nvim-notify"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- use "github/copilot.vim"
   -- use "tpope/vim-surround"
