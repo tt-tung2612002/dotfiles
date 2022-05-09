@@ -16,7 +16,7 @@ local options = {
   splitbelow = true, -- force all horizontal splits to go below current window
   splitright = true, -- force all vertical splits to go to the right of current window
   swapfile = false, -- creates a swapfile
-  -- termguicolors = true, -- set term gui colors (most terminals support this)
+  termguicolors = true, -- set term gui colors (most terminals support this)
   timeoutlen = 200, -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true, -- enable persistent undo
   updatetime = 300, -- faster completion (4000ms default)
@@ -33,6 +33,7 @@ local options = {
   scrolloff = 8, -- is one of my fav
   sidescrolloff = 8,
   guifont = "FiraMono Nerd Font:h15", -- the font used in graphical neovim applications
+  pastetoggle = "<F10>"
 }
 
 vim.opt.shortmess:append "c"
@@ -48,3 +49,15 @@ vim.cmd [[highlight Comment guifg=#dbaf84]]
 vim.cmd [[highlight String guifg=#ec8076]]
 vim.cmd [[highlight Number guifg=#c0b6a9]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+vim.cmd [[autocmd User TelescopePreviewerLoaded setlocal wrap]]
+vim.cmd [[set formatoptions-=c formatoptions-=r formatoptions-=o]]
+vim.cmd [[set nopaste]]
+vim.cmd [[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]]
+
+
+
+-- Exit Vim if NERDTree is the only window remaining in the only tab.
+vim.cmd [[autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif]]
+
+-- Close the tab if NERDTree is the only window remaining in it.
+vim.cmd [[autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif]]

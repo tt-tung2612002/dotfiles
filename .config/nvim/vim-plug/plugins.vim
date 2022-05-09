@@ -18,6 +18,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 call plug#end()
 " air-line
 let g:airline_powerline_fonts = 1

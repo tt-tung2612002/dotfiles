@@ -1,20 +1,11 @@
 -- vim.g["mapleader"]="<space>"
 -- vim.g["maplocalleader"]="<space>"
+-- vim.g.copilot_assume_mapped = true
 vim.g["airline_theme"] = "codedark"
 vim.cmd([[
-set pastetoggle=<F10>
 nmap <F3> :TagbarToggle<CR>
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
-nnoremap <leader>1 1gt
-nnoremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
 noremap! <C-BS> <C-w>
 noremap! <C-h> <C-w>
 nnoremap j h
@@ -52,26 +43,12 @@ nnoremap <M-j> :vertical resize -2<CR>
 nnoremap <M-l> :vertical resize +2<CR>
 nnoremap <M-l> :vertical resize +2<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
-highlight Comment guifg=#a26a4d
+cnoremap <C-v> <c-r>"
 imap <C-BS> <C-W>
-" Auto reload.
-au FocusGained,BufEnter * :checktime
-" Vim Commentary
-"
-autocmd User TelescopePreviewerLoaded setlocal wrap
-
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 ]])
 
 local opts = { noremap = true, silent = true }
 
--- local term_opts = { silent = true }
-
--- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
 -- Visual --
@@ -95,5 +72,21 @@ keymap("n", "q", ":q<CR>", opts)
 keymap("n", "Q", ":wq!<CR>", opts)
 keymap("x", "<C-/>", ":CommentToggle <CR>", opts)
 
+-- navigate between occurences of selected variable.
 keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', opts)
 keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', opts)
+
+-- navigate between tabs of current buffer.
+keymap('n', '<leader>1', "1gt", opts)
+keymap('n', '<leader>2', "2gt", opts)
+keymap('n', '<leader>3', "3gt", opts)
+keymap('n', '<leader>4', "4gt", opts)
+keymap('n', '<leader>5', "5gt", opts)
+keymap('n', '<leader>6', "6gt", opts)
+keymap('n', '<leader>7', "7gt", opts)
+keymap('n', '<leader>8', "8gt", opts)
+keymap('n', '<leader>9', "9gt", opts)
+
+
+-- save current file.
+keymap("n", "<C-s>", ":w", opts)

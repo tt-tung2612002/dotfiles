@@ -57,7 +57,9 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
   use "moll/vim-bbye"
-  use "nvim-lualine/lualine.nvim"
+  use { "nvim-lualine/lualine.nvim",
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
   use "akinsho/toggleterm.nvim"
   use "ahmedkhalf/project.nvim"
   use "lewis6991/impatient.nvim"
@@ -72,6 +74,7 @@ return packer.startup(function(use)
 
 
   -- color for css.
+  use 'folke/lsp-colors.nvim'
   use "chrisbra/colorizer"
   use "norcalli/nvim-colorizer.lua"
 
@@ -118,12 +121,18 @@ return packer.startup(function(use)
   -- Git
   use "lewis6991/gitsigns.nvim"
 
+  -- coc-nvims
+  use { 'neoclide/coc.nvim', branch = 'release' }
+
   -- airline
   use "vim-airline/vim-airline"
   use "vim-airline/vim-airline-themes"
   use "ryanoasis/vim-devicons"
   use "edkolev/tmuxline.vim"
-  use "github/copilot.vim"
+  use {
+    "github/copilot.vim", branch = "release"
+  }
+
   use "tpope/vim-surround"
 
   -- nerdtree
@@ -136,6 +145,25 @@ return packer.startup(function(use)
 
   -- notification
   use "rcarriga/nvim-notify"
+
+  -- dashboard
+  use "mhinz/vim-startify"
+
+  -- terminal
+  use "akinsho/toggleterm.nvim"
+
+
+  -- Todo plugins
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {
+      }
+    end
+  }
+
+  use 'unblevable/quick-scope'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- use "github/copilot.vim"

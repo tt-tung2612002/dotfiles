@@ -14,7 +14,7 @@ local diagnostics = {
   symbols = { error = " ", warn = " " },
   colored = false,
   update_in_insert = false,
-  always_visible = true,
+  always_visible = false,
 }
 
 local diff = {
@@ -24,16 +24,9 @@ local diff = {
   cond = hide_in_width
 }
 
-local mode = {
-  "mode",
-  fmt = function(str)
-    return "-- " .. str .. " --"
-  end,
-}
-
 local filetype = {
   "filetype",
-  icons_enabled = false,
+  icons_enabled = true,
   icon = nil,
 }
 
@@ -49,36 +42,39 @@ local location = {
 }
 
 -- cool function for progress
-local progress = function()
-  local current_line = vim.fn.line(".")
-  local total_lines = vim.fn.line("$")
-  local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
-  local line_ratio = current_line / total_lines
-  local index = math.ceil(line_ratio * #chars)
-  return chars[index]
-end
+-- local progress = function()
+--   local current_line = vim.fn.line(".")
+--   local total_lines = vim.fn.line("$")
+--   local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+--   local line_ratio = current_line / total_lines
+--   local index = math.ceil(line_ratio * #chars)
+--   return chars[index]
+-- end
 
-local spaces = function()
-  return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-end
+-- local spaces = function()
+--   return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+-- end
+
+
+local mytheme = require 'lualine.themes.codedark'
 
 lualine.setup({
   options = {
     icons_enabled = true,
-    theme = "auto",
+    theme = mytheme,
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
     always_divide_middle = true,
   },
   sections = {
-    lualine_a = { branch, diagnostics },
-    lualine_b = { mode },
+    lualine_a = { branch },
+    lualine_b = { "mode" },
     lualine_c = {},
     -- lualine_x = { "encoding", "fileformat", "filetype" },
-    lualine_x = { diff, spaces, "encoding", filetype },
+    lualine_x = { diff, "encoding", filetype },
     lualine_y = { location },
-    lualine_z = { progress },
+    lualine_z = { diagnostics },
   },
   inactive_sections = {
     lualine_a = {},
