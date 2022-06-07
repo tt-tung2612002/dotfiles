@@ -1,3 +1,4 @@
+source ~/zsh-snap/znap.zsh
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -15,6 +16,9 @@ POWERLEVEL9K_MODE="nerfont-complete"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
+znap source zshzoo/cd-ls
+
+
 source $ZSH/oh-my-zsh.sh
 plugins=(
 	git
@@ -25,7 +29,8 @@ plugins=(
 )
 
 bindkey '\t' menu-complete
-
+# export TERM="xterm+256colors"
+export PATH="${PATH}:${HOME}/.local/bin/"
 export NVM_DIR="$HOME/.nvm"
 . ~/z.sh
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -34,8 +39,13 @@ export NVM_DIR="$HOME/.nvm"
 alias update="source ~/.zshrc"
 alias edit="nvim ~/.zshrc"
 alias vim="nvim"
-alias init.vim="nvim ~/.config/nvim/init.vim"
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+alias apt="sudo apt"
+alias his="history"
+alias ls="exa -l -T --level=1 --no-permissions --no-filesize -a --icons --color always"
+alias nvim="~/neovide/target/release/neovide --maximized"
+alias pwd="pwd | xclip"
+alias spring="/home/tt-tung261/Downloads/spring-1.2.0.M2/bin/spring"
 
 bindkey '^ ' autosuggest-accept
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
