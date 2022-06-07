@@ -5,4 +5,6 @@ end
 
 require("user.lsp.config")
 require("user.lsp.handlers").setup()
+
+require("user.lsp.lsp-format")
 -- require("user.lsp.null-ls")

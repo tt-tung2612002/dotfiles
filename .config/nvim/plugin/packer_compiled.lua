@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
+  ["auto-pairs"] = {
+    loaded = true,
+    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/auto-pairs",
+    url = "https://github.com/jiangmiao/auto-pairs"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
@@ -129,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
+  ["dap-buddy.nvim"] = {
+    loaded = true,
+    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/dap-buddy.nvim",
+    url = "https://github.com/Pocco81/dap-buddy.nvim"
+  },
   ["darkplus.nvim"] = {
     loaded = true,
     path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
@@ -169,25 +179,15 @@ _G.packer_plugins = {
     path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/lsp-colors.nvim",
     url = "https://github.com/folke/lsp-colors.nvim"
   },
-  ["lualine.nvim"] = {
+  ["lsp-format.nvim"] = {
     loaded = true,
-    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/lualine.nvim",
-    url = "https://github.com/nvim-lualine/lualine.nvim"
+    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/lsp-format.nvim",
+    url = "https://github.com/lukas-reineke/lsp-format.nvim"
   },
-  nerdtree = {
+  ["neoscroll.nvim"] = {
     loaded = true,
-    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/nerdtree",
-    url = "https://github.com/preservim/nerdtree"
-  },
-  ["nerdtree-git-plugin"] = {
-    loaded = true,
-    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/nerdtree-git-plugin",
-    url = "https://github.com/Xuyuanp/nerdtree-git-plugin"
-  },
-  ["nerdtree-visual-selection"] = {
-    loaded = true,
-    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/nerdtree-visual-selection",
-    url = "https://github.com/PhilRunninger/nerdtree-visual-selection"
+    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
+    url = "https://github.com/karb94/neoscroll.nvim"
   },
   ["nlsp-settings.nvim"] = {
     loaded = true,
@@ -198,11 +198,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
-  },
-  ["nvim-autopairs"] = {
-    loaded = true,
-    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
-    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -219,6 +214,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/nvim-comment",
     url = "https://github.com/terrortylor/nvim-comment"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-jdtls"] = {
+    loaded = true,
+    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/nvim-jdtls",
+    url = "https://github.com/mfussenegger/nvim-jdtls"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
@@ -285,6 +290,16 @@ _G.packer_plugins = {
     path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/quick-scope",
     url = "https://github.com/unblevable/quick-scope"
   },
+  ["renamer.nvim"] = {
+    loaded = true,
+    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/renamer.nvim",
+    url = "https://github.com/filipdutescu/renamer.nvim"
+  },
+  ["tabout.nvim"] = {
+    loaded = true,
+    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/tabout.nvim",
+    url = "https://github.com/abecodes/tabout.nvim"
+  },
   ["telescope-media-files.nvim"] = {
     config = { "\27LJ\2\nP\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\16media_files\19load_extension\14telescope\frequire\0" },
     load_after = {},
@@ -350,15 +365,25 @@ _G.packer_plugins = {
     path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/vim-eunuch",
     url = "https://github.com/tpope/vim-eunuch"
   },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["vim-illuminate"] = {
     loaded = true,
     path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/vim-illuminate",
     url = "https://github.com/RRethy/vim-illuminate"
   },
-  ["vim-nerdtree-syntax-highlight"] = {
+  ["vim-polyglot"] = {
     loaded = true,
-    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/vim-nerdtree-syntax-highlight",
-    url = "https://github.com/tiagofumo/vim-nerdtree-syntax-highlight"
+    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/vim-polyglot",
+    url = "https://github.com/sheerun/vim-polyglot"
+  },
+  ["vim-repeat"] = {
+    loaded = true,
+    path = "/home/tt-tung261/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    url = "https://github.com/tpope/vim-repeat"
   },
   ["vim-startify"] = {
     loaded = true,

@@ -47,8 +47,8 @@ cnoremap <C-v> <c-r>"
 imap <C-BS> <C-W>
 ]])
 
-local opts = { noremap = true, silent = true }
 
+local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- Visual --
@@ -63,7 +63,7 @@ keymap("x", "<A-i>", ":move '<-2<CR>gv-gv", opts)
 
 keymap("i", "<C-v>", "<F10><C-r>+<F10>", opts)
 -- Rename current file.
-keymap("n", "<F2>", ":Rename ", opts)
+keymap("n", "<F4>", ":Rename ", opts)
 keymap("n", "<C-/>", ":CommentToggle <CR>", opts)
 keymap("v", "<C-/>", ":CommentToggle <CR>", opts)
 
@@ -87,6 +87,23 @@ keymap('n', '<leader>7', "7gt", opts)
 keymap('n', '<leader>8', "8gt", opts)
 keymap('n', '<leader>9', "9gt", opts)
 
+-- Next and previous problems.
+keymap('n', '\\', "<cmd>call CocAction('diagnosticNext')<CR>", opts)
+
+
+
+
+
+
+
+-- NvimTree Toggle
+keymap('n', '<C-B>', ":NvimTreeToggle<CR>", opts)
+
 
 -- save current file.
-keymap("n", "<C-s>", ":w", opts)
+keymap("n", "<C-s>", ":w<CR>", opts)
+
+-- Renamer
+keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', opts)
+keymap('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', opts)
+keymap('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', opts)
